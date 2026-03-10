@@ -28,7 +28,11 @@ const TRUST_KEYS = [
   "hero.trustItems.fast",
 ];
 
-export default function Hero() {
+interface HeroProps {
+  stad?: string;
+}
+
+export default function Hero({ stad }: HeroProps) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     naam: "",
@@ -51,7 +55,7 @@ export default function Hero() {
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(stad ? { ...formData, stad } : formData),
       });
 
       if (response.ok) {
@@ -104,21 +108,23 @@ export default function Hero() {
               variants={item}
               className="inline-block text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6"
             >
-              {t("hero.subtitle")}
+              {stad ? `Schoorsteenveger in ${stad}` : t("hero.subtitle")}
             </motion.span>
 
             <motion.h1
               variants={item}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-6xl font-heading font-semibold max-w-[14ch] mb-6"
             >
-              {t("hero.title")}
+              {stad ? `Vakkundig en snel geregeld in ${stad}.` : t("hero.title")}
             </motion.h1>
 
             <motion.p
               variants={item}
               className="text-muted text-lg md:text-xl max-w-[40ch] mb-10"
             >
-              {t("hero.description")}
+              {stad
+                ? `Professioneel schoorsteen vegen, inspectie of reparatie in ${stad} en omgeving. Vandaag nog geholpen.`
+                : t("hero.description")}
             </motion.p>
 
             <motion.div variants={item} className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -152,7 +158,7 @@ export default function Hero() {
             >
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-1">
-                  {t("appointment.eyebrow")}
+                  {stad ? `Afspraak in ${stad}` : t("appointment.eyebrow")}
                 </p>
                 <h2 className="text-lg md:text-xl font-heading font-semibold mb-2">
                   {t("appointment.title")}

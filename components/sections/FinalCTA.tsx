@@ -6,7 +6,11 @@ import { fadeUp, viewportConfig } from "@/lib/animations";
 import { PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
 import { useTranslation } from "@/lib/i18n-context";
 
-export default function FinalCTA() {
+interface FinalCTAProps {
+  stad?: string;
+}
+
+export default function FinalCTA({ stad }: FinalCTAProps) {
   const { t } = useTranslation();
   return (
     <section className="relative py-28 md:py-36 overflow-hidden">
@@ -34,21 +38,23 @@ export default function FinalCTA() {
             variants={fadeUp}
             className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6"
           >
-            {t("finalCta.eyebrow")}
+            {stad ? `Schoorsteenveger ${stad}` : t("finalCta.eyebrow")}
           </motion.span>
 
           <motion.h2
             variants={fadeUp}
             className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold max-w-[16ch] mb-6 text-[#f5f5f0]"
           >
-            {t("finalCta.title")}
+            {stad ? `Klaar om het te regelen in ${stad}?` : t("finalCta.title")}
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="text-[#a0a0a0] text-base md:text-lg max-w-[40ch] mb-10"
           >
-            {t("finalCta.description")}
+            {stad
+              ? `Bel ons direct of plan online een afspraak. Wij staan voor u klaar in ${stad} en omgeving.`
+              : t("finalCta.description")}
           </motion.p>
 
           <motion.div
