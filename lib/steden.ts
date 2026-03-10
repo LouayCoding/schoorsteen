@@ -13,9 +13,14 @@ export function getAllSteden(): string[] {
 export function getStadSlug(stad: string): string {
   return stad
     .toLowerCase()
-    .replace(/\s+/g, '-')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[''`]/g, '')
     .replace(/[()]/g, '')
-    .replace(/,/g, '');
+    .replace(/,/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 export function getStadFromSlug(slug: string): string | null {
