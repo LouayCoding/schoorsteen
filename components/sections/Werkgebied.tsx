@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, staggerItem, viewportConfig } from "@/lib/animations";
 import { TOP_CITIES } from "@/lib/constants";
+import { getStadSlug } from "@/lib/steden";
 import SectionHeader from "@/components/SectionHeader";
 import { useTranslation } from "@/lib/i18n-context";
 
@@ -35,7 +36,7 @@ export default function Werkgebied() {
               {TOP_CITIES.map((city) => (
                 <motion.div key={city} variants={staggerItem}>
                   <Link
-                    href={`/werkgebied/${city.toLowerCase()}`}
+                    href={`/werkgebied/${getStadSlug(city)}`}
                     className="inline-flex bg-surface text-foreground text-sm font-medium px-4 py-2 rounded-full hover:bg-accent/10 hover:text-accent transition-colors duration-200"
                   >
                     {city}

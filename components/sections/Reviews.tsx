@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, viewportConfig } from "@/lib/animations";
 import SectionHeader from "@/components/SectionHeader";
@@ -72,12 +73,12 @@ export default function Reviews() {
           variants={fadeUp}
           className="text-center mt-12"
         >
-          <a
+          <Link
             href="/reviews"
             className="inline-flex items-center justify-center border border-divider text-foreground font-medium text-sm px-6 py-3 rounded-full hover:border-muted transition-colors duration-200"
           >
             {t("reviews.viewAll")}
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
