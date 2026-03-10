@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 import { fadeUp, viewportConfig } from "@/lib/animations";
 
 const STATS = [
-  { value: "5.000+", label: "Verstoppingen opgelost" },
+  { value: "2.500+", label: "Schoorstenen geveegd" },
   { value: "4.9/5", label: "Klantbeoordeling" },
-  { value: "24/7", label: "Spoedservice" },
-  { value: "100%", label: "Professioneel" },
+  { value: "24u", label: "Reactietijd" },
+  { value: "100%", label: "Gecertificeerd" },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="bg-surface py-16 md:py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="border-y border-divider">
+      <div className="mx-auto max-w-[1400px] px-6 py-10 md:py-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -22,18 +22,18 @@ export default function TrustStrip() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4"
         >
           {STATS.map((stat) => (
             <motion.div
               key={stat.label}
               variants={fadeUp}
-              className="bg-white rounded-2xl p-6 text-center border border-divider/50"
+              className="text-center"
             >
-              <p className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+              <p className="text-2xl md:text-3xl font-heading font-semibold text-foreground">
                 {stat.value}
               </p>
-              <p className="text-sm text-muted mt-1.5">{stat.label}</p>
+              <p className="text-sm text-muted mt-1">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>

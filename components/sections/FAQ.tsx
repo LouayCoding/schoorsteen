@@ -12,7 +12,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-28">
       <div className="mx-auto max-w-[720px] px-6">
         <SectionHeader
           eyebrow={t("faq.eyebrow")}
@@ -27,32 +27,28 @@ export default function FAQ() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="bg-white rounded-2xl border border-divider/50 overflow-hidden"
+          className="flex flex-col"
         >
           {FAQ_ITEMS.map((item, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
-              className={i < FAQ_ITEMS.length - 1 ? "border-b border-divider/50" : ""}
+              className="border-b border-divider"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left group"
+                className="w-full flex items-center justify-between py-6 text-left group"
               >
                 <span className="text-base font-medium pr-8 group-hover:text-accent transition-colors duration-200">
                   {item.question}
                 </span>
-                <svg
-                  className={`w-5 h-5 text-muted shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-180" : ""
+                <span
+                  className={`text-muted text-xl shrink-0 transition-transform duration-300 ${
+                    openIndex === i ? "rotate-45" : ""
                   }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
+                  +
+                </span>
               </button>
               <AnimatePresence>
                 {openIndex === i && (
@@ -62,7 +58,7 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
                   >
-                    <p className="text-sm text-muted leading-relaxed px-6 pb-5 max-w-[55ch]">
+                    <p className="text-sm text-muted leading-relaxed pb-6 max-w-[55ch]">
                       {item.answer}
                     </p>
                   </motion.div>

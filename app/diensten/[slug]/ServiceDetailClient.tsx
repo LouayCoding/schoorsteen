@@ -44,7 +44,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
         <div>
           <motion.span
             variants={item}
-            className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full mb-5"
+            className="inline-block text-xs uppercase tracking-[0.2em] text-accent font-medium mb-4"
           >
             Vanaf €{service.price}
           </motion.span>
@@ -78,7 +78,7 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
           </motion.div>
         </div>
 
-        <motion.div variants={item} className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ position: 'relative' }}>
+        <motion.div variants={item} className="relative aspect-[4/3] overflow-hidden rounded" style={{ position: 'relative' }}>
           <Image
             src={service.image}
             alt={service.title}
@@ -91,8 +91,8 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
 
       {/* Benefits Section */}
       {service.benefits && service.benefits.length > 0 && (
-        <div className="mt-20">
-          <span className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3.5 py-1.5 rounded-full mb-5">
+        <div className="mt-20 pt-16 border-t border-divider">
+          <span className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6 block">
             Voordelen
           </span>
           <h2 className="text-2xl md:text-3xl font-heading font-semibold mb-8">
@@ -100,10 +100,8 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {service.benefits.map((benefit, index) => (
-              <div key={index} className="flex gap-3 items-start">
-                <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg className="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                </div>
+              <div key={index} className="flex gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                 <p className="text-base text-foreground">{benefit}</p>
               </div>
             ))}
@@ -113,23 +111,20 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
 
       {/* Process Section */}
       {service.process && service.process.length > 0 && (
-        <div className="mt-20">
-          <span className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3.5 py-1.5 rounded-full mb-5">
+        <div className="mt-20 pt-16 border-t border-divider">
+          <span className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6 block">
             Werkwijze
           </span>
           <h2 className="text-2xl md:text-3xl font-heading font-semibold mb-8">
             Hoe werkt het?
           </h2>
-          <div className="flex flex-col gap-0 relative">
-            <div className="absolute left-[23px] top-6 bottom-6 w-px bg-divider" />
+          <div className="flex flex-col gap-8">
             {service.process.map((step, index) => (
-              <div key={index} className="flex gap-6 relative pb-8 last:pb-0">
-                <div className="relative z-10 shrink-0 w-[47px] h-[47px] rounded-full bg-accent/10 flex items-center justify-center">
-                  <span className="text-sm font-heading font-bold text-accent">
-                    0{index + 1}
-                  </span>
-                </div>
-                <div className="pt-2.5">
+              <div key={index} className="flex gap-6">
+                <span className="text-2xl font-heading font-semibold text-accent/30 shrink-0">
+                  0{index + 1}
+                </span>
+                <div>
                   <h3 className="text-base font-heading font-semibold mb-1.5">
                     {step.step}
                   </h3>
@@ -145,39 +140,35 @@ export default function ServiceDetailClient({ service }: ServiceDetailClientProp
 
       {/* FAQ Section */}
       {service.faq && service.faq.length > 0 && (
-        <div className="mt-20">
-          <span className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3.5 py-1.5 rounded-full mb-5">
+        <div className="mt-20 pt-16 border-t border-divider">
+          <span className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6 block">
             Veelgestelde vragen
           </span>
           <h2 className="text-2xl md:text-3xl font-heading font-semibold mb-8">
             Vragen over {service.title.toLowerCase()}?
           </h2>
-          <div className="bg-white rounded-2xl border border-divider/50 overflow-hidden">
-            {service.faq.map((faqItem, index) => (
-              <div key={index} className={index < service.faq!.length - 1 ? "border-b border-divider/50" : ""}>
+          <div className="flex flex-col">
+            {service.faq.map((item, index) => (
+              <div key={index} className="border-b border-divider">
                 <button
                   onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left group"
+                  className="w-full flex items-center justify-between py-6 text-left group"
                 >
                   <span className="text-base font-medium pr-8 group-hover:text-accent transition-colors duration-200">
-                    {faqItem.q}
+                    {item.q}
                   </span>
-                  <svg
-                    className={`w-5 h-5 text-muted shrink-0 transition-transform duration-300 ${
-                      openFaqIndex === index ? "rotate-180" : ""
+                  <span
+                    className={`text-muted text-xl shrink-0 transition-transform duration-300 ${
+                      openFaqIndex === index ? "rotate-45" : ""
                     }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
+                    +
+                  </span>
                 </button>
                 {openFaqIndex === index && (
-                  <div className="px-6 pb-5">
+                  <div className="pb-6">
                     <p className="text-sm text-muted leading-relaxed max-w-[55ch]">
-                      {faqItem.a}
+                      {item.a}
                     </p>
                   </div>
                 )}

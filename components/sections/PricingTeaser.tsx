@@ -10,8 +10,8 @@ const FEATURED = SERVICES.slice(0, 3);
 
 export default function PricingTeaser() {
   return (
-    <section className="py-24 md:py-32">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader
           eyebrow="Tarieven"
           title="Heldere prijzen, geen verrassingen."
@@ -26,22 +26,18 @@ export default function PricingTeaser() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-px bg-divider mb-10"
         >
-          {FEATURED.map((service, i) => (
+          {FEATURED.map((service) => (
             <motion.div
               key={service.slug}
               variants={staggerItem}
-              className={`bg-white rounded-2xl p-8 border ${
-                i === 1
-                  ? "border-accent/30 ring-1 ring-accent/10"
-                  : "border-divider/50"
-              }`}
+              className="bg-background p-8 md:p-10"
             >
               <h3 className="text-lg font-heading font-semibold mb-2">
                 {service.title}
               </h3>
-              <p className="text-3xl font-heading font-bold text-accent mb-6">
+              <p className="text-3xl font-heading font-semibold text-accent mb-6">
                 €{service.price}
                 <span className="text-sm font-body text-muted font-normal ml-1">
                   vanaf
@@ -73,7 +69,7 @@ export default function PricingTeaser() {
         >
           <Link
             href="/tarieven"
-            className="inline-flex items-center justify-center border border-divider text-foreground font-medium text-sm px-6 py-3 rounded-full hover:border-muted transition-colors duration-200"
+            className="text-sm text-muted hover:text-foreground transition-colors duration-200"
           >
             Bekijk alle tarieven →
           </Link>

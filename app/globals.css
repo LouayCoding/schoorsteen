@@ -1,17 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #ffffff;
-  --color-foreground: #1a1a1a;
-  --color-muted: #6b7280;
-  --color-surface: #f5f7fa;
-  --color-surface-alt: #eef2f7;
-  --color-divider: #e5e7eb;
-  --color-accent: #2a6be8;
-  --color-accent-hover: #3d8aff;
-  --color-accent-muted: rgba(42, 107, 232, 0.08);
+  --color-background: #141414;
+  --color-foreground: #f5f5f0;
+  --color-muted: #a0a0a0;
+  --color-surface: #1c1c1c;
+  --color-divider: #2a2a2a;
+  --color-accent: #e8622a;
+  --color-accent-hover: #ff7a3d;
+  --color-accent-muted: rgba(232, 98, 42, 0.12);
   --font-heading: "Montserrat", system-ui, sans-serif;
   --font-body: "Poppins", system-ui, sans-serif;
+}
+
+[data-theme="light"] {
+  --color-background: #fafaf8;
+  --color-foreground: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-surface: #f0eeeb;
+  --color-divider: #e2e0dc;
 }
 
 html {
@@ -28,6 +35,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -44,11 +52,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-@layer base {
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {

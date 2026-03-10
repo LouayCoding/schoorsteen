@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, viewportConfig } from "@/lib/animations";
 import SectionHeader from "@/components/SectionHeader";
@@ -18,8 +17,8 @@ export default function Reviews() {
   const featuredReviews = REVIEWS.slice(0, 6);
 
   return (
-    <section className="py-24 md:py-32 bg-surface">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="py-20 md:py-28 border-t border-divider">
+      <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader
           eyebrow={t("reviews.eyebrow")}
           title={t("reviews.title")}
@@ -34,28 +33,25 @@ export default function Reviews() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.08 } },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-divider"
         >
           {featuredReviews.map((review, index) => (
             <motion.div
               key={index}
               variants={fadeUp}
-              className="bg-white rounded-2xl p-6 border border-divider/50"
+              className="bg-background p-8"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <StarIcon key={i} />
-                  ))}
-                </div>
-                <span className="text-2xl text-accent/20 font-heading font-bold leading-none">&ldquo;</span>
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(review.rating)].map((_, i) => (
+                  <StarIcon key={i} />
+                ))}
               </div>
               
-              <p className="text-sm text-foreground leading-relaxed mb-5">
-                &ldquo;{review.text}&rdquo;
+              <p className="text-sm text-foreground leading-relaxed mb-4">
+                "{review.text}"
               </p>
               
-              <div className="flex items-center justify-between text-xs text-muted pt-4 border-t border-divider/50">
+              <div className="flex items-center justify-between text-xs text-muted">
                 <div>
                   <p className="font-medium text-foreground">{review.name}</p>
                   <p>{review.location}</p>
@@ -73,12 +69,12 @@ export default function Reviews() {
           variants={fadeUp}
           className="text-center mt-12"
         >
-          <Link
+          <a
             href="/reviews"
-            className="inline-flex items-center justify-center border border-divider text-foreground font-medium text-sm px-6 py-3 rounded-full hover:border-muted transition-colors duration-200"
+            className="inline-flex items-center justify-center border border-foreground/20 text-foreground font-medium text-sm px-6 py-3 rounded hover:border-foreground/40 transition-colors duration-200"
           >
             {t("reviews.viewAll")}
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

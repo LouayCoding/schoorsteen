@@ -24,13 +24,13 @@ export default function StickyCTA() {
     >
       <a
         href={PHONE_HREF}
-        className="flex-1 text-center bg-accent text-white font-medium text-sm py-3 rounded-full hover:bg-accent-hover transition-colors"
+        className="flex-1 text-center bg-accent text-foreground font-medium text-sm py-3 rounded hover:bg-accent-hover transition-colors"
       >
         {t("stickyCta.call")}
       </a>
       <Link
         href="/afspraak"
-        className="flex-1 text-center border border-divider text-foreground font-medium text-sm py-3 rounded-full hover:border-muted transition-colors"
+        className="flex-1 text-center border border-divider text-foreground font-medium text-sm py-3 rounded hover:border-muted transition-colors"
       >
         {t("stickyCta.appointment")}
       </Link>

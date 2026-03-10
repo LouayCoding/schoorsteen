@@ -9,7 +9,7 @@ import SectionHeader from "@/components/SectionHeader";
 export default function TarievenPage() {
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader
           eyebrow="Tarieven"
           title="Heldere prijzen, geen verrassingen."
@@ -21,19 +21,19 @@ export default function TarievenPage() {
           whileInView="visible"
           viewport={viewportConfig}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-divider mb-12"
         >
-          {SERVICES.map((service, i) => (
+          {SERVICES.map((service) => (
             <motion.div
               key={service.slug}
               variants={staggerItem}
-              className="bg-white rounded-2xl p-8 border border-divider/50 transition-all hover:-translate-y-1"
+              className="bg-background p-8 md:p-10"
             >
               <Link href={`/diensten/${service.slug}`} className="group block">
                 <h3 className="text-lg font-heading font-semibold mb-2 group-hover:text-accent transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-3xl font-heading font-bold text-accent mb-6">
+                <p className="text-3xl font-heading font-semibold text-accent mb-6">
                   €{service.price}
                   <span className="text-sm font-body text-muted font-normal ml-1">vanaf</span>
                 </p>
@@ -45,7 +45,7 @@ export default function TarievenPage() {
                     </li>
                   ))}
                 </ul>
-                <span className="text-sm font-medium text-accent group-hover:text-accent-hover transition-colors">
+                <span className="text-sm text-muted group-hover:text-foreground transition-colors">
                   Meer info →
                 </span>
               </Link>
@@ -72,7 +72,7 @@ export default function TarievenPage() {
         >
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center justify-center bg-accent text-white font-medium text-base px-8 py-4 rounded-full hover:bg-accent-hover transition-colors"
+            className="inline-flex items-center justify-center bg-accent text-foreground font-medium text-base px-8 py-4 rounded hover:bg-accent-hover transition-colors"
           >
             Bel {PHONE_NUMBER}
           </a>

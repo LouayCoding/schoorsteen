@@ -78,7 +78,7 @@ export default function DebugConsole() {
     error: "text-red-400",
     warn: "text-yellow-400",
     log: "text-gray-300",
-    network: "text-blue-400",
+    network: "text-orange-400",
   };
 
   const typeLabel: Record<string, string> = {

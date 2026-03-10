@@ -8,13 +8,13 @@
     "contact": "Contact"
   },
   "hero": {
-    "subtitle": "Riool verstopt? 24/7 spoeddienst",
-    "title": "Snel en vakkundig gedeboucheerd.",
-    "description": "Riool, toilet of afvoer verstopt? Wij verhelpen het. 24/7 bereikbaar, door heel België.",
+    "subtitle": "Gecertificeerde schoorsteenvegers",
+    "title": "Vakkundig en snel geregeld.",
+    "description": "Professioneel schoorsteen vegen, inspectie of reparatie. Snel geholpen door heel België.",
     "callButton": "Bel {phone}",
     "appointmentButton": "Afspraak maken",
     "trustItems": {
-      "certificate": "24/7 Spoeddienst",
+      "certificate": "Gecertificeerd",
       "certified": "Ervaren vakmensen",
       "transparent": "Transparante tarieven",
       "fast": "Snelle responstijd"
@@ -23,7 +23,7 @@
   "services": {
     "eyebrow": "Onze diensten",
     "title": "Wat kunnen wij voor u doen?",
-    "subtitle": "Van deboucheren tot rioolherstelling. Steeds vakkundig en aan een eerlijke prijs.",
+    "subtitle": "Van schoorsteen vegen tot daklekkage reparatie. Steeds vakkundig en aan een eerlijke prijs.",
     "from": "Vanaf",
     "viewAll": "Bekijk alle diensten"
   },
@@ -41,7 +41,7 @@
       },
       "step3": {
         "title": "Probleem verholpen",
-        "description": "Uw riool, afvoer of leiding stroomt weer als vanouds. Snel, proper en netjes."
+        "description": "Uw schoorsteen is weer schoon en veilig. Snel, proper en netjes."
       }
     },
     "callButton": "Bel {phone}"
@@ -76,7 +76,7 @@
         "phone": "04XX XX XX XX",
         "postalCode": "2000",
         "houseNumber": "123",
-        "remark": "Bv. verstopt riool, geurhinder, wateroverlast..."
+        "remark": "Bv. schoorsteen vegen, inspectie, rookoverlast..."
       }
     }
   },
@@ -95,13 +95,13 @@
   },
   "finalCta": {
     "eyebrow": "Rechtstreeks regelen",
-    "title": "Riool verstopt? Wij verhelpen het.",
-    "description": "Bel ons rechtstreeks of plan online een afspraak. 24/7 bereikbaar, door heel België.",
+    "title": "Schoorsteen laten vegen? Wij regelen het.",
+    "description": "Bel ons rechtstreeks of plan online een afspraak. Snel geholpen door heel België.",
     "callButton": "Bel {phone}",
     "appointmentButton": "Afspraak maken"
   },
   "footer": {
-    "description": "Professionele rioolservice door heel België. Deboucheren, rioolreiniging, inspectie en herstelling. 24/7 bereikbaar bij urgentie.",
+    "description": "Professionele schoorsteenservice door heel België. Schoorsteen vegen, inspectie en reparatie. Snel geholpen.",
     "quickLinks": "Snelle links",
     "contact": "Contact",
     "phone": "Telefoon",
@@ -124,8 +124,8 @@
   },
   "about": {
     "eyebrow": "Over ons",
-    "title": "Rioolbeheer door heel België.",
-    "intro1": "Loodgieter is een landelijk netwerk van ervaren rioolspecialisten. Geen groot bedrijf met dure kantoren, maar vakmensen die hun werk au sérieux nemen.",
+    "title": "Schoorsteenservice door heel België.",
+    "intro1": "Schoorsteenservice is een landelijk netwerk van ervaren schoorsteenvegers. Geen groot bedrijf met dure kantoren, maar vakmensen die hun werk au sérieux nemen.",
     "intro2": "Elke situatie is anders. Daarom werken wij niet met standaardoplossingen, maar bekijken we per geval wat er nodig is. Eerlijk advies, heldere prijzen en werk waar we achter staan.",
     "intro3": "Van Antwerpen tot Luik — wij zorgen ervoor dat er steeds een technieker bij u in de buurt beschikbaar is. Snel, betrouwbaar en 24/7 bereikbaar.",
     "stats": {

@@ -11,8 +11,8 @@ import { useTranslation } from "@/lib/i18n-context";
 export default function ServicesGrid() {
   const { t } = useTranslation();
   return (
-    <section className="py-24 md:py-32">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-6">
         <SectionHeader
           eyebrow={t("services.eyebrow")}
           title={t("services.title")}
@@ -27,13 +27,13 @@ export default function ServicesGrid() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.08 } },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-divider"
         >
           {SERVICES.map((service) => (
             <motion.div key={service.slug} variants={staggerItem}>
               <Link
                 href={`/diensten/${service.slug}`}
-                className="group block bg-white rounded-2xl border border-divider/50 overflow-hidden h-full hover:border-accent/30 hover:-translate-y-1 transition-all duration-300"
+                className="group block bg-background h-full transition-colors duration-300 hover:bg-surface"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
@@ -44,10 +44,10 @@ export default function ServicesGrid() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <div className="flex flex-col p-6">
-                  <span className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-2.5 py-1 rounded-full w-fit mb-3">
+                <div className="flex flex-col p-6 md:p-8">
+                  <p className="text-xs uppercase tracking-[0.15em] text-accent font-medium mb-3">
                     {t("services.from")} €{service.price}
-                  </span>
+                  </p>
                   <h3 className="text-lg font-heading font-semibold mb-2 group-hover:text-accent transition-colors duration-300">
                     {service.title}
                   </h3>

@@ -30,17 +30,17 @@ export default function NotFound() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url(/heropc.png)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background" />
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="relative z-0 mx-auto max-w-[1200px] w-full px-6 py-32 md:py-40 text-center text-white"
+        className="relative z-0 mx-auto max-w-[1400px] w-full px-6 py-32 md:py-40 text-center"
       >
         <motion.span
           variants={item}
-          className="inline-flex bg-white/15 text-white text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6"
+          className="inline-block text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6"
         >
           Error 404
         </motion.span>
@@ -61,7 +61,7 @@ export default function NotFound() {
 
         <motion.p
           variants={item}
-          className="text-white/60 text-lg md:text-xl max-w-[45ch] mx-auto mb-10"
+          className="text-muted text-lg md:text-xl max-w-[45ch] mx-auto mb-10"
         >
           De pagina die u zoekt bestaat niet of is verplaatst. Geen probleem, wij helpen u graag verder.
         </motion.p>
@@ -69,29 +69,33 @@ export default function NotFound() {
         <motion.div variants={item} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Link
             href="/"
-            className="inline-flex items-center justify-center bg-accent text-white font-medium text-base px-8 py-4 rounded-full hover:bg-accent-hover transition-colors duration-200"
+            className="inline-flex items-center justify-center bg-accent text-foreground font-medium text-base px-8 py-4 rounded hover:bg-accent-hover transition-colors duration-200"
           >
             Terug naar home
           </Link>
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center justify-center border border-white/20 text-white font-medium text-base px-8 py-4 rounded-full hover:border-white/40 transition-colors duration-200"
+            className="inline-flex items-center justify-center border border-foreground/20 text-foreground font-medium text-base px-8 py-4 rounded hover:border-foreground/40 transition-colors duration-200"
           >
             Bel {PHONE_NUMBER}
           </a>
         </motion.div>
 
-        <motion.div variants={item} className="flex flex-wrap gap-2.5 justify-center">
-          <Link href="/diensten" className="inline-flex items-center text-sm text-white/60 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition-colors">
+        <motion.div variants={item} className="flex flex-wrap gap-x-8 gap-y-3 justify-center">
+          <Link href="/diensten" className="flex items-center gap-2.5 text-sm text-muted hover:text-accent transition-colors">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Onze diensten
           </Link>
-          <Link href="/werkgebied" className="inline-flex items-center text-sm text-white/60 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition-colors">
+          <Link href="/werkgebied" className="flex items-center gap-2.5 text-sm text-muted hover:text-accent transition-colors">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Werkgebied
           </Link>
-          <Link href="/tarieven" className="inline-flex items-center text-sm text-white/60 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition-colors">
+          <Link href="/tarieven" className="flex items-center gap-2.5 text-sm text-muted hover:text-accent transition-colors">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Tarieven
           </Link>
-          <Link href="/contact" className="inline-flex items-center text-sm text-white/60 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition-colors">
+          <Link href="/contact" className="flex items-center gap-2.5 text-sm text-muted hover:text-accent transition-colors">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Contact
           </Link>
         </motion.div>

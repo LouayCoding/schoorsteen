@@ -27,10 +27,10 @@ export async function POST(req: NextRequest) {
     const mailOptions = {
       from: process.env.SMTP_FROM,
       to: process.env.SMTP_TO,
-      subject: `Loodgieter — Nieuwe aanvraag - ${naam}`,
+      subject: `Nieuwe afspraak aanvraag - ${naam}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2a6be8;">Nieuwe afspraak aanvraag</h2>
+          <h2 style="color: #e8622a;">Nieuwe afspraak aanvraag</h2>
           <p>Er is een nieuwe afspraak aanvraag binnengekomen via de website.</p>
           
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">

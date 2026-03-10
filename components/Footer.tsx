@@ -7,9 +7,9 @@ import { useTranslation } from "@/lib/i18n-context";
 export default function Footer() {
   const { t } = useTranslation();
   return (
-    <footer className="bg-surface">
-      <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-10">
+    <footer className="border-t border-divider">
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           <div className="md:col-span-1">
             <p className="font-heading text-lg font-semibold tracking-tight mb-4">
               {COMPANY_NAME}

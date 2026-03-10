@@ -4,7 +4,7 @@ export default function PrivacyPage() {
   return (
     <article className="pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="mx-auto max-w-[720px] px-6">
-        <span className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3.5 py-1.5 rounded-full mb-5">
+        <span className="inline-block text-xs uppercase tracking-[0.2em] text-accent font-medium mb-4">
           Juridisch
         </span>
         <h1 className="text-3xl md:text-4xl font-heading font-semibold mb-8">
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
               Wie zijn wij
             </h2>
             <p>
-              {COMPANY_NAME} (Rioolbeheer Nederland) is verantwoordelijk voor de verwerking van persoonsgegevens 
+              {COMPANY_NAME} is verantwoordelijk voor de verwerking van persoonsgegevens 
               zoals weergegeven in dit privacybeleid.
             </p>
           </section>

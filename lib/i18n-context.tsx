@@ -2,11 +2,11 @@
 
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
 import nl from "@/messages/nl.json";
-import be from "@/messages/be.json";
+import en from "@/messages/en.json";
 
-export type Locale = "nl" | "be";
+export type Locale = "nl" | "en";
 
-const messages: Record<Locale, Record<string, unknown>> = { nl, be };
+const messages: Record<Locale, Record<string, unknown>> = { nl, en };
 
 type I18nContextType = {
   locale: Locale;

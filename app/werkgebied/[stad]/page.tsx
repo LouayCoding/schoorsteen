@@ -25,11 +25,11 @@ export async function generateMetadata({ params }: StadPageProps): Promise<Metad
   }
 
   return {
-    title: `Rioolservice ${stad} | Loodgieter`,
-    description: `Professionele rioolservice in ${stad}. Riool ontstoppen, afvoer ontstoppen, inspectie en reparatie. 24/7 spoedservice. Direct online plannen.`,
+    title: `Schoorsteenveger ${stad} | Schoorsteenservice`,
+    description: `Professionele schoorsteenveger in ${stad}. Schoorsteen vegen, inspectie en reparatie. Snel geholpen. Direct online plannen.`,
     openGraph: {
-      title: `Rioolservice ${stad}`,
-      description: `Professionele rioolservice en ontstoppingen in ${stad} en omgeving.`,
+      title: `Schoorsteenveger ${stad}`,
+      description: `Professionele schoorsteen service in ${stad} en omgeving.`,
     },
   };
 }

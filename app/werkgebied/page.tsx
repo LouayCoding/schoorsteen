@@ -42,13 +42,13 @@ export default function WerkgebiedPage() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/heropc.png)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
 
         <motion.div
           variants={container}
           initial="hidden"
           animate="visible"
-          className="relative z-0 mx-auto max-w-[1400px] w-full px-6 pt-32 pb-20 md:pt-40 md:pb-28 text-white"
+          className="relative z-0 mx-auto max-w-[1400px] w-full px-6 pt-32 pb-20 md:pt-40 md:pb-28"
         >
           <motion.span
             variants={item}
@@ -66,21 +66,21 @@ export default function WerkgebiedPage() {
 
           <motion.p
             variants={item}
-            className="text-white/70 text-lg md:text-xl max-w-[45ch] mb-10"
+            className="text-muted text-lg md:text-xl max-w-[45ch] mb-10"
           >
-            Ons landelijk netwerk van monteurs staat voor u klaar. Van Groningen tot Maastricht.
+            Ons landelijk netwerk van vakmensen staat voor u klaar. Van Groningen tot Maastricht.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-col sm:flex-row gap-4">
             <a
               href={PHONE_HREF}
-              className="inline-flex items-center justify-center bg-accent text-white font-medium text-base px-8 py-4 rounded hover:bg-accent-hover transition-colors duration-200"
+              className="inline-flex items-center justify-center bg-accent text-foreground font-medium text-base px-8 py-4 rounded hover:bg-accent-hover transition-colors duration-200"
             >
               Bel {PHONE_NUMBER}
             </a>
             <Link
               href="/afspraak"
-              className="inline-flex items-center justify-center border border-white/20 text-white font-medium text-base px-8 py-4 rounded hover:border-white/40 transition-colors duration-200"
+              className="inline-flex items-center justify-center border border-foreground/20 text-foreground font-medium text-base px-8 py-4 rounded hover:border-foreground/40 transition-colors duration-200"
             >
               Afspraak maken
             </Link>
@@ -90,7 +90,7 @@ export default function WerkgebiedPage() {
 
       {/* ── Populaire steden ── */}
       <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <SectionHeader
             eyebrow="Populaire locaties"
             title="Meest aangevraagd."
@@ -102,23 +102,23 @@ export default function WerkgebiedPage() {
             whileInView="visible"
             viewport={viewportConfig}
             variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-divider mb-8"
           >
             {TOP_CITIES.map((city) => (
               <motion.div key={city} variants={staggerItem}>
                 <Link
                   href={`/werkgebied/${getStadSlug(city)}`}
-                  className="group relative block bg-white rounded-2xl border border-divider/50 overflow-hidden hover:border-accent/30 transition-all duration-300"
+                  className="group relative block bg-background overflow-hidden transition-colors duration-300 hover:bg-surface"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
                       src="/schoorsteenkap-plaatsen.png"
-                      alt={`Rioolservice ${city}`}
+                      alt={`Schoorsteenveger ${city}`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 50vw, 20vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   </div>
                   <div className="p-5">
                     <p className="text-base font-heading font-semibold group-hover:text-accent transition-colors duration-300">
@@ -135,7 +135,7 @@ export default function WerkgebiedPage() {
 
       {/* ── Alle gemeenten ── */}
       <section className="py-20 md:py-28 border-t border-divider">
-        <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <SectionHeader
             eyebrow="Alle gemeenten"
             title="Zoek uw gemeente."
@@ -168,13 +168,13 @@ export default function WerkgebiedPage() {
             whileInView="visible"
             viewport={viewportConfig}
             variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.01 } } }}
-            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3"
+            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-px bg-divider"
           >
             {filteredSteden.map((stad) => (
               <motion.div key={stad} variants={staggerItem}>
                 <Link
                   href={`/werkgebied/${getStadSlug(stad)}`}
-                  className="group block bg-white rounded-xl border border-divider/50 p-4 hover:border-accent/30 transition-all duration-300"
+                  className="group block bg-background p-4 transition-colors duration-300 hover:bg-surface"
                 >
                   <p className="text-sm font-heading font-semibold group-hover:text-accent transition-colors duration-300">
                     {stad}
@@ -203,8 +203,14 @@ export default function WerkgebiedPage() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-[1200px] px-6">
+      <section className="relative py-28 md:py-36 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url(/daklekkage-repareren.png)" }}
+        />
+        <div className="absolute inset-0 bg-[#141414]/85" />
+
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -213,25 +219,25 @@ export default function WerkgebiedPage() {
               hidden: {},
               visible: { transition: { staggerChildren: 0.1 } },
             }}
-            className="bg-gradient-to-br from-accent to-accent-hover rounded-3xl px-8 py-16 md:px-16 md:py-20 flex flex-col items-center text-center"
+            className="flex flex-col items-center text-center"
           >
             <motion.span
               variants={fadeUp}
-              className="inline-flex bg-white/20 text-white text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6"
+              className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-6"
             >
               Direct regelen
             </motion.span>
 
             <motion.h2
               variants={fadeUp}
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold max-w-[16ch] mb-6 text-white"
+              className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold max-w-[16ch] mb-6 text-[#f5f5f0]"
             >
               Klaar om het te regelen?
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="text-white/70 text-base md:text-lg max-w-[40ch] mb-10"
+              className="text-[#a0a0a0] text-base md:text-lg max-w-[40ch] mb-10"
             >
               Bel ons direct of plan online een afspraak. Wij staan voor u klaar.
             </motion.p>
@@ -242,13 +248,13 @@ export default function WerkgebiedPage() {
             >
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center justify-center bg-white text-accent font-semibold text-base px-8 py-4 rounded-full hover:bg-white/90 transition-colors duration-200"
+                className="inline-flex items-center justify-center bg-accent text-[#f5f5f0] font-medium text-base px-8 py-4 rounded hover:bg-accent-hover transition-colors duration-200"
               >
                 Bel {PHONE_NUMBER}
               </a>
               <Link
                 href="/afspraak"
-                className="inline-flex items-center justify-center border border-white/30 text-white font-medium text-base px-8 py-4 rounded-full hover:border-white/50 hover:bg-white/10 transition-colors duration-200"
+                className="inline-flex items-center justify-center border border-white/20 text-[#f5f5f0] font-medium text-base px-8 py-4 rounded hover:border-white/40 transition-colors duration-200"
               >
                 Afspraak maken
               </Link>

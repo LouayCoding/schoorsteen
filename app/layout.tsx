@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
+import ThemeProvider from "@/components/ThemeProvider";
 import { I18nProvider } from "@/lib/i18n-context";
 import "./globals.css";
 
@@ -29,9 +30,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Loodgieter | Rioolservice & Ontstopping door heel Nederland",
+  title: "Schoorsteenservice | Schoorsteen vegen door heel Nederland",
   description:
-    "Professionele rioolservice door heel Nederland. Riool ontstoppen, WC ontstoppen, rioolreiniging en inspectie. 24/7 spoedservice. Bel direct: 085 060 47 02.",
+    "Professionele schoorsteen-, luchtkanaal- en ventilatieservice door heel Nederland. Schoorsteen vegen vanaf €39,50. Bel direct: 085 060 47 02.",
 };
 
 export default function RootLayout({
@@ -42,12 +43,14 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${poppins.variable} ${montserrat.variable} antialiased`}>
-        <I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
             <Header />
             <main>{children}</main>
             <Footer />
             <StickyCTA />
-        </I18nProvider>
+          </I18nProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

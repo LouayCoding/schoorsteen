@@ -24,11 +24,11 @@ export default function SectionHeader({
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
-      className={`flex flex-col gap-5 mb-14 md:mb-20 ${alignment}`}
+      className={`flex flex-col gap-4 mb-12 md:mb-16 ${alignment}`}
     >
       <motion.span
         variants={fadeUp}
-        className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3.5 py-1.5 rounded-full w-fit"
+        className="text-xs uppercase tracking-[0.2em] text-accent font-medium"
       >
         {eyebrow}
       </motion.span>

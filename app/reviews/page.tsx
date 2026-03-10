@@ -27,7 +27,7 @@ export default function ReviewsPage() {
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-[1400px] px-6">
         <motion.div
           variants={container}
           initial="hidden"
@@ -35,7 +35,7 @@ export default function ReviewsPage() {
         >
           <motion.span
             variants={item}
-            className="inline-flex bg-accent/10 text-accent text-xs font-semibold px-3.5 py-1.5 rounded-full mb-5"
+            className="inline-block text-xs uppercase tracking-[0.2em] text-accent font-medium mb-4"
           >
             Reviews
           </motion.span>
@@ -61,28 +61,25 @@ export default function ReviewsPage() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.06 } },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-divider mt-12"
         >
           {REVIEWS.map((review, index) => (
             <motion.div
               key={index}
               variants={fadeUp}
-              className="bg-white rounded-2xl border border-divider/50 p-6"
+              className="bg-background p-8"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <StarIcon key={i} />
-                  ))}
-                </div>
-                <span className="text-2xl text-accent/20 font-heading font-bold leading-none">&ldquo;</span>
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(review.rating)].map((_, i) => (
+                  <StarIcon key={i} />
+                ))}
               </div>
               
-              <p className="text-sm text-foreground leading-relaxed mb-5">
-                &ldquo;{review.text}&rdquo;
+              <p className="text-sm text-foreground leading-relaxed mb-4">
+                "{review.text}"
               </p>
               
-              <div className="flex items-center justify-between text-xs text-muted pt-4 border-t border-divider/50">
+              <div className="flex items-center justify-between text-xs text-muted">
                 <div>
                   <p className="font-medium text-foreground">{review.name}</p>
                   <p>{review.location}</p>
