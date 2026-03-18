@@ -31,28 +31,19 @@ export default function LanguageSwitcher({ iconOnly = false }: { iconOnly?: bool
   }
 
   return (
-    <div className="flex items-center gap-2">
-      {LOCALES.map((loc) => (
-        <button
-          key={loc}
-          onClick={() => setLocale(loc)}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200 ${
-            locale === loc
-              ? "bg-accent text-foreground"
-              : "text-muted hover:text-foreground hover:bg-surface"
-          }`}
-          aria-label={`Switch to ${labels[loc]}`}
-        >
-          <img
-            src={`https://flagcdn.com/w40/${loc === "en" ? "gb" : loc}.png`}
-            alt={labels[loc]}
-            width={16}
-            height={12}
-            className="rounded-sm"
-          />
-          <span>{labels[loc]}</span>
-        </button>
-      ))}
-    </div>
+    <button
+      onClick={() => setLocale(nextLocale)}
+      aria-label={`Switch to ${labels[nextLocale]}`}
+      className="flex items-center gap-2 px-3 py-2 rounded border border-divider text-sm font-medium text-muted hover:text-foreground hover:border-foreground/30 transition-colors duration-200"
+    >
+      <img
+        src={`https://flagcdn.com/w40/${locale === "en" ? "gb" : locale}.png`}
+        alt={labels[locale]}
+        width={16}
+        height={12}
+        className="rounded-sm"
+      />
+      <span>{labels[locale]}</span>
+    </button>
   );
 }
