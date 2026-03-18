@@ -57,7 +57,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         menuOpen
-          ? "bg-background border-b border-divider"
+          ? "bg-background"
           : scrolled
             ? "bg-background/90 backdrop-blur-md border-b border-divider"
             : "bg-transparent"
@@ -145,7 +145,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden fixed inset-0 top-16 bg-background z-[60] overflow-y-auto"
+            className="md:hidden fixed left-0 right-0 bottom-0 top-16 bg-background z-[60] overflow-y-auto border-t border-divider"
             style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
           >
             <nav className="flex flex-col px-6 pt-8 gap-1">
