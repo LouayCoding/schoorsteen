@@ -47,15 +47,28 @@ export default function Header() {
 
   useEffect(() => {
     if (menuOpen) {
+      const scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
     } else {
+      const top = document.body.style.top;
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      if (top) {
+        window.scrollTo(0, parseInt(top, 10) * -1);
+      }
     }
   }, [menuOpen]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
         menuOpen
           ? "bg-background"
           : scrolled
@@ -146,7 +159,7 @@ export default function Header() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
             className="md:hidden fixed left-0 right-0 bottom-0 top-16 bg-background z-[60] overflow-y-auto border-t border-divider"
-            style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+            style={{ paddingBottom: "env(safe-area-inset-bottom)", WebkitOverflowScrolling: "touch", transform: "translateZ(0)" }}
           >
             <nav className="flex flex-col px-6 pt-8 gap-1">
               {NAV_LINKS.map((link) => (
