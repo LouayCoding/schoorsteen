@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   title: "Schoorsteenservice | Schoorsteen vegen door heel Nederland",
   description:
     "Professionele schoorsteen-, luchtkanaal- en ventilatieservice door heel Nederland. Schoorsteen vegen vanaf €39,50. Bel direct: 085 060 47 02.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
