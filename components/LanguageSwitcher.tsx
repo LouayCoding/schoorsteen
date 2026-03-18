@@ -34,7 +34,7 @@ export default function LanguageSwitcher({ iconOnly = false }: { iconOnly?: bool
     <button
       onClick={() => setLocale(nextLocale)}
       aria-label={`Switch to ${labels[nextLocale]}`}
-      className="flex items-center gap-2 px-3 py-2 rounded border border-divider text-sm font-medium text-muted hover:text-foreground hover:border-foreground/30 transition-colors duration-200"
+      className="flex items-center gap-2 px-2 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors duration-200"
     >
       <img
         src={`https://flagcdn.com/w40/${locale === "en" ? "gb" : locale}.png`}
