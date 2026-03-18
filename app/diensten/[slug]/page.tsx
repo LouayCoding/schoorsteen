@@ -15,6 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${service.title} | Schoorsteenservice`,
     description: service.description,
+    alternates: {
+      canonical: `/diensten/${slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | Schoorsteenservice`,
+      description: service.description,
+      url: `/diensten/${slug}`,
+    },
   };
 }
 
@@ -29,8 +37,37 @@ export default async function ServiceDetailPage({
 
   const otherServices = SERVICES.filter((s) => s.slug !== slug).slice(0, 3);
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Schoorsteenservice",
+      telephone: "085 060 47 02",
+      url: "https://www.directschoorsteenvegen.nl",
+    },
+    areaServed: { "@type": "Country", name: "Nederland" },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: service.price,
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "EUR",
+        price: service.price,
+        unitText: "exclusief btw",
+      },
+    },
+  };
+
   return (
     <article className="pt-32 pb-20 md:pt-40 md:pb-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <div className="mx-auto max-w-[1400px] px-6">
         <ServiceDetailClient service={service} />
 

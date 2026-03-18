@@ -26,10 +26,14 @@ export async function generateMetadata({ params }: StadPageProps): Promise<Metad
 
   return {
     title: `Schoorsteenveger ${stad} | Schoorsteenservice`,
-    description: `Professionele schoorsteenveger in ${stad}. Schoorsteen vegen, inspectie en reparatie. Snel geholpen. Direct online plannen.`,
+    description: `Professionele schoorsteenveger in ${stad}. Schoorsteen vegen, inspectie en reparatie in ${stad} en omgeving. Vakkundig, snel en eerlijk geprijsd. Direct online plannen.`,
+    alternates: {
+      canonical: `/werkgebied/${stadSlug}`,
+    },
     openGraph: {
-      title: `Schoorsteenveger ${stad}`,
-      description: `Professionele schoorsteen service in ${stad} en omgeving.`,
+      title: `Schoorsteenveger ${stad} | Schoorsteenservice`,
+      description: `Professionele schoorsteenveger in ${stad} en omgeving. Schoorsteen vegen vanaf €39,50. Snel geholpen.`,
+      url: `/werkgebied/${stadSlug}`,
     },
   };
 }

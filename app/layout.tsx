@@ -30,13 +30,36 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const BASE_URL = "https://www.directschoorsteenvegen.nl";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: "Schoorsteenservice | Schoorsteen vegen door heel Nederland",
   description:
     "Professionele schoorsteen-, luchtkanaal- en ventilatieservice door heel Nederland. Schoorsteen vegen vanaf €39,50. Bel direct: 085 060 47 02.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  openGraph: {
+    type: "website",
+    siteName: "Schoorsteenservice",
+    locale: "nl_NL",
+    title: "Schoorsteenservice | Schoorsteen vegen door heel Nederland",
+    description:
+      "Professionele schoorsteen-, luchtkanaal- en ventilatieservice door heel Nederland. Schoorsteen vegen vanaf €39,50.",
+    images: [{ url: "/heropc.png", width: 1200, height: 630, alt: "Schoorsteenservice Nederland" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Schoorsteenservice | Schoorsteen vegen door heel Nederland",
+    description:
+      "Professionele schoorsteen-, luchtkanaal- en ventilatieservice door heel Nederland. Schoorsteen vegen vanaf €39,50.",
+    images: ["/heropc.png"],
   },
 };
 
@@ -88,6 +111,32 @@ export default function RootLayout({
           </I18nProvider>
         </ThemeProvider>
         <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Schoorsteenservice",
+              url: BASE_URL,
+              telephone: "085 060 47 02",
+              email: "info@directschoorsteenvegen.nl",
+              image: `${BASE_URL}/heropc.png`,
+              priceRange: "€€",
+              areaServed: {
+                "@type": "Country",
+                name: "Nederland",
+              },
+              sameAs: [BASE_URL],
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                opens: "08:00",
+                closes: "18:00",
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );
