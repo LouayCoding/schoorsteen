@@ -56,9 +56,11 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-divider"
-          : "bg-transparent"
+        menuOpen
+          ? "bg-background border-b border-divider"
+          : scrolled
+            ? "bg-background/90 backdrop-blur-md border-b border-divider"
+            : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-[1600px] px-6 md:px-12 lg:px-20 flex items-center justify-between h-16 md:h-20">
