@@ -5,8 +5,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
 import CookieConsent from "@/components/CookieConsent";
+import PhoneClickTracker from "@/components/PhoneClickTracker";
 import ThemeProvider from "@/components/ThemeProvider";
 import { BASE_URL, COMPANY_NAME, EMAIL, PHONE_NUMBER } from "@/lib/constants";
+import { buildTrackingBootstrap } from "@/lib/tracking";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -67,6 +69,9 @@ export const metadata: Metadata = {
 
 const THEME_INIT = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t="dark";var d=document.documentElement;d.setAttribute("data-theme",t);d.classList.add("js");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="dark"?"#12100e":"#faf8f4")}catch(e){}})();`;
 
+// Consent Mode v2 default + gtag/GTM loader. Moet vóór GTM in <head> staan.
+const TRACKING_BOOTSTRAP = buildTrackingBootstrap();
+
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -94,6 +99,7 @@ export default function RootLayout({
     <html lang="nl" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+        <script dangerouslySetInnerHTML={{ __html: TRACKING_BOOTSTRAP }} />
       </head>
       <body className={`${manrope.variable} ${sora.variable} antialiased`}>
         <a href="#main" className="skip-link">
@@ -105,6 +111,7 @@ export default function RootLayout({
           <Footer />
           <StickyCTA />
           <CookieConsent />
+          <PhoneClickTracker />
         </ThemeProvider>
         <Analytics />
         <script
