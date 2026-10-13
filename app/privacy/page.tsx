@@ -78,10 +78,16 @@ export default function PrivacyPage() {
               Cookies
             </h2>
             <p>
-              Deze website gebruikt functionele cookies om goed te werken. Analytische
-              cookies (Google Analytics en Tag Manager) worden pas geladen nadat u
-              hiervoor toestemming geeft via de cookiemelding. U kunt uw keuze
-              wijzigen door de cookies van deze site te verwijderen in uw browser.
+              Deze website gebruikt functionele cookies om goed te werken. Wij gebruiken
+              Google Tag Manager, Google Analytics en Google Ads met Google Consent
+              Mode. Zonder uw toestemming plaatsen deze diensten geen analytische of
+              advertentiecookies en worden er geen persoonsgegevens voor advertenties
+              gedeeld; Google ontvangt dan alleen beperkte, cookieloze signalen. Pas
+              nadat u via de cookiemelding op &ldquo;Accepteren&rdquo; klikt, worden
+              analytische en advertentiecookies gebruikt, bijvoorbeeld om te meten of
+              een advertentie tot een aanvraag heeft geleid. U kunt uw keuze wijzigen
+              door de cookies en websitegegevens van deze site te verwijderen in uw
+              browser.
             </p>
           </section>
         </div>

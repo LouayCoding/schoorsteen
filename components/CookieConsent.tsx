@@ -1,41 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { readConsent, updateConsent } from "@/lib/tracking";
 
-const GA_ID = "G-PHQN1MJ0FY";
-const GTM_ID = "GTM-P8ZGLMP";
+/*
+ * gtag.js en GTM worden altijd geladen (zie app/layout.tsx) met Consent Mode v2
+ * op "denied". Deze banner zet alleen de toestemming bij via
+ * gtag('consent','update', …) en bewaart de keuze; bij herladen past de
+ * bootstrap in <head> de opgeslagen keuze opnieuw toe.
+ */
 
-function loadAnalytics() {
-  if (document.getElementById("ga-script")) return;
-
-  const gtag = document.createElement("script");
-  gtag.id = "ga-script";
-  gtag.async = true;
-  gtag.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-  document.head.appendChild(gtag);
-
-  const inline = document.createElement("script");
-  inline.textContent = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
-  document.head.appendChild(inline);
-}
+const noopSubscribe = () => () => {};
 
 export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const choice = localStorage.getItem("cookie-consent");
-    if (choice === "accepted") {
-      loadAnalytics();
-    } else if (!choice) {
-      setVisible(true);
-    }
-  }, []);
+  // Server: "unknown" (geen banner); client: opgeslagen keuze uit localStorage.
+  const stored = useSyncExternalStore(
+    noopSubscribe,
+    () => readConsent() ?? "none",
+    () => "unknown",
+  );
+  const [dismissed, setDismissed] = useState(false);
+  const visible = stored === "none" && !dismissed;
 
   function decide(accepted: boolean) {
-    localStorage.setItem("cookie-consent", accepted ? "accepted" : "declined");
-    setVisible(false);
-    if (accepted) loadAnalytics();
+    updateConsent(accepted ? "accepted" : "declined");
+    setDismissed(true);
   }
 
   if (!visible) return null;
@@ -48,7 +38,7 @@ export default function CookieConsent() {
     >
       <p className="text-sm font-semibold mb-1">Cookies</p>
       <p className="text-sm text-muted leading-relaxed mb-4">
-        Wij gebruiken analytische cookies om de website te verbeteren. Zie ons{" "}
+        Wij gebruiken analytische en advertentiecookies (Google) om de website en onze advertenties te verbeteren. Zie ons{" "}
         <Link href="/privacy" className="underline hover:text-foreground">
           privacybeleid
         </Link>

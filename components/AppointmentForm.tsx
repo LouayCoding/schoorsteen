@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
 import { appointmentSchema } from "@/lib/appointment-schema";
 import { INPUT } from "@/lib/ui";
+import { trackLeadSuccess } from "@/lib/tracking";
 
 interface AppointmentFormProps {
   stad?: string;
@@ -20,6 +21,8 @@ export default function AppointmentForm({ stad, variant = "card" }: AppointmentF
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
+  // Voorkomt dubbele verzending én dubbel vuren van de conversie.
+  const inFlight = useRef(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -51,6 +54,8 @@ export default function AppointmentForm({ stad, variant = "card" }: AppointmentF
       return;
     }
 
+    if (inFlight.current) return;
+    inFlight.current = true;
     setStatus("submitting");
     try {
       const res = await fetch("/api/afspraak", {
@@ -62,6 +67,13 @@ export default function AppointmentForm({ stad, variant = "card" }: AppointmentF
         .json()
         .catch(() => null);
       if (res.ok && result?.ok) {
+        // Conversie: alleen hier, na bevestiging van de server, één keer per verzending.
+        trackLeadSuccess(`afspraak_${variant}`, {
+          email: parsed.data.email,
+          telefoon: parsed.data.telefoon,
+          postcode: parsed.data.postcode,
+          stad,
+        });
         setStatus("success");
         setFormData(EMPTY);
       } else {
@@ -71,6 +83,8 @@ export default function AppointmentForm({ stad, variant = "card" }: AppointmentF
     } catch {
       setServerMessage("Controleer uw internetverbinding.");
       setStatus("error");
+    } finally {
+      inFlight.current = false;
     }
   };
 
